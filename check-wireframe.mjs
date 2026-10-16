@@ -19,5 +19,5 @@ for(const [id] of pages){
  assert(!html.includes('<iframe'),'No third-party frames');
 }
 assert.equal(models.length,new Set(models.map(m=>m.id)).size);assert.equal(stock.length,new Set(stock.map(s=>s[0])).size);
-const js=fs.readFileSync('wireframe-app.js','utf8');assert(!/fetch\s*\(|XMLHttpRequest|sendBeacon|https?:\/\//.test(js),'No form transmission');
+for(const script of ['wireframe-app.js','wireframe-catalog.js']){const js=fs.readFileSync(script,'utf8');assert(!/fetch\s*\(|XMLHttpRequest|sendBeacon|https?:\/\//.test(js),'No form transmission: '+script)}
 console.log(`${pages.length} pages: single H1, unique IDs, ${checked} local asset/link checks, anchors, partner separation, no form transmission: OK`);

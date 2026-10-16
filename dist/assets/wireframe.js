@@ -43,27 +43,12 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('change',e=>{if(e.target.matches('.qty input')){e.target.value=safeQty(e.target.value);const row=e.target.closest('[data-cart-id]');if(row){cart[row.dataset.cartId]=safeQty(e.target.value);renderCart(false)}}});
 let favorites=[];try{favorites=JSON.parse(localStorage.getItem('vk-wireframe-favorites')||'[]');if(!Array.isArray(favorites))favorites=[]}catch{}
-$$('[data-favorite]').forEach(b=>{b.setAttribute('aria-pressed',favorites.includes(b.dataset.favorite));b.addEventListener('click',()=>{const id=b.dataset.favorite;favorites=favorites.includes(id)?favorites.filter(v=>v!==id):[...favorites,id];b.setAttribute('aria-pressed',favorites.includes(id));try{localStorage.setItem('vk-wireframe-favorites',JSON.stringify(favorites))}catch{}if($('#favorites-only')?.checked)applyCatalog()})});
-let type='all',category=params.get('category')||'gates';
-if(page==='catalog'){
- const search=(params.get('q')||'').toLowerCase();if(search){const mapped=[['забор','fences'],['перил','rails'],['лестниц','rails'],['козыр','awnings'],['навес','awnings'],['решётк','grilles'],['решетк','grilles'],['мангал','grills'],['мебел','furniture']].find(([k])=>search.includes(k));if(mapped)category=mapped[1]}
- if(!categories.some(c=>c[0]===category))category='gates';$('#category-filter').value=category;
- $$('[data-type-tabs] button').forEach(b=>b.addEventListener('click',()=>{type=b.dataset.type;$$('[data-type-tabs] button').forEach(x=>x.classList.toggle('active',x===b));applyCatalog()}));
- $('#category-filter').addEventListener('change',e=>{category=e.target.value;type='all';params.delete('q');$$('[data-type-tabs] button').forEach(b=>b.classList.toggle('active',b.dataset.type==='all'));applyCatalog()});
- $$('#min-price,#max-price,input[name=style],#favorites-only,#sort').forEach(i=>i.addEventListener('input',applyCatalog));
- $$('[data-reset]').forEach(b=>b.addEventListener('click',()=>{$('#min-price').value='';$('#max-price').value='';$$('input[name=style]').forEach(i=>i.checked=false);$('#favorites-only').checked=false;$('#sort').value='default';type='all';params.delete('q');$$('[data-type-tabs] button').forEach(x=>x.classList.toggle('active',x.dataset.type==='all'));applyCatalog()}));
- applyCatalog();
-}
-function applyCatalog(){
- const c=categories.find(c=>c[0]===category),q=(params.get('q')||'').toLowerCase(),styles=$$('input[name=style]:checked').map(i=>i.value),min=Number($('#min-price').value)||0,max=Number($('#max-price').value)||Infinity,sort=$('#sort').value,grid=$('.product-grid');
- $('h1').textContent=category==='gates'?'Кованые ворота и калитки на заказ':c[1]+' на заказ';$('.page-head p').textContent=category==='gates'?'Распашные и откатные ворота, открытая ковка или сплошное заполнение. Изготовление по размерам вашего проёма.':c[2]+'. Изготовление по вашим размерам и эскизу.';
- $('[data-type-tabs]').hidden=category!=='gates';let cards=$$('.product-card');if(sort!=='default')cards.sort((a,b)=>(Number(a.dataset.price)-Number(b.dataset.price))*(sort==='price-desc'?-1:1));else cards.sort((a,b)=>models.findIndex(m=>m.id===a.dataset.model)-models.findIndex(m=>m.id===b.dataset.model));
- let shown=0;cards.forEach(card=>{const model=models.find(m=>m.id===card.dataset.model),queryMatch=!q||/ворот|калит|забор|перил|лестниц|козыр|навес|реш.тк|мангал|мебел/i.test(q)||`${model.name} ${model.id} ${model.desc}`.toLowerCase().includes(q);card.hidden=model.category!==category||!queryMatch||(type!=='all'&&model.type!==type)||(styles.length&&!styles.includes(model.style))||model.price<min||model.price>max||($('#favorites-only').checked&&!favorites.includes(model.id));if(!card.hidden)shown++;grid.appendChild(card)});
- const lead=$('.lead-card');const visible=cards.filter(c=>!c.hidden);if(visible.length>4)visible[4].after(lead);else grid.appendChild(lead);lead.hidden=shown===0;$('#found-count').textContent=shown;$('#empty-products').hidden=shown>0;
-}
+$$('[data-favorite]').forEach(b=>{b.setAttribute('aria-pressed',favorites.includes(b.dataset.favorite));b.addEventListener('click',()=>{const id=b.dataset.favorite;favorites=favorites.includes(id)?favorites.filter(v=>v!==id):[...favorites,id];b.setAttribute('aria-pressed',favorites.includes(id));try{localStorage.setItem('vk-wireframe-favorites',JSON.stringify(favorites))}catch{}if($('#favorites-only')?.checked)window.refreshCatalog?.()})});
+let category=params.get('category')||'gates';
 if(page==='product'){
  const m=models.find(m=>m.id===params.get('id'))||models[0];$('h1').textContent=m.name;$('#product-id').textContent='Эскиз '+m.id;$('#product-name').textContent=m.name;$('#product-description').textContent=m.desc;$('#main-product-image').src='../assets/img/'+m.image;$('#main-product-image').alt=m.name;$('#product-unit-price').textContent='от '+money(m.price)+' за '+m.unit;$('#configurator').dataset.price=m.price;$('#configurator').dataset.unit=m.unit;
  if(m.category!=='gates'){$$('#configurator label').forEach(l=>{if($('select',l))l.hidden=true});$$('[data-gallery]').forEach(b=>{b.dataset.gallery=m.image;$('img',b).src='../assets/img/'+m.image})}
+ if(m.type==='wicket')$('#width').value=1;
  $('#configurator').addEventListener('input',calculate);$('#configurator').addEventListener('submit',e=>e.preventDefault());calculate();
  $$('[data-gallery]').forEach(b=>b.addEventListener('click',()=>$('#main-product-image').src='../assets/img/'+b.dataset.gallery));
  $$('[role=tab]').forEach(b=>b.addEventListener('click',()=>{$$('[role=tab]').forEach(t=>t.setAttribute('aria-selected',t===b));$$('.tab-panel').forEach(p=>p.hidden=p.id!==b.dataset.panel)}));
