@@ -1,4 +1,8 @@
 /* Content and layout from the supplied design, kept monochrome for review. */
+#scenarios .scenario-card:first-child{background:#ededed;border-color:#aaa}
+#scenarios .project-offer-points{padding-left:16px;margin:0 0 24px;color:#747474;font-size:12px;line-height:1.65}
+#scenarios .project-offer-points li{margin:0 0 9px}
+@media(max-width:700px){#scenarios .scenario-grid{grid-template-columns:minmax(0,1fr)}#scenarios .scenario-card>div{padding:22px}#scenarios .scenario-card img{height:180px}#scenarios .scenario-card h3{font-size:23px}#scenarios .project-offer-points{font-size:12px}#scenarios .scenario-card .btn{font-size:10px;min-height:40px}}
 .design-section-title{text-align:center;margin-bottom:32px}
 .design-section-title h2{max-width:1250px;margin:0 auto}
 .design-advantages .eyebrow{color:#bbb}
