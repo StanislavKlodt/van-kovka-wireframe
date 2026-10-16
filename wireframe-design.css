@@ -1,0 +1,108 @@
+/* Content and layout from the supplied design, kept monochrome for review. */
+.design-section-title{text-align:center;margin-bottom:32px}
+.design-section-title h2{max-width:1250px;margin:0 auto}
+.design-advantages .eyebrow{color:#bbb}
+.design-advantage-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.design-advantage-grid article{padding:26px 23px;min-height:220px;background:#333;border:1px solid #555;border-radius:14px}
+.design-advantage-grid h3{font-size:17px;line-height:1.35;margin-bottom:12px}
+.design-advantage-grid p{font-size:13px;line-height:1.65;color:#d0d0d0;margin:0}
+.design-reviews .section-head{align-items:end}
+.design-reviews-intro{font-size:13px;margin-bottom:25px}
+.design-ratings{display:flex;flex-wrap:wrap;gap:8px}
+.design-ratings>button{display:flex;align-items:center;gap:9px;border:1px solid #e5e5e5;border-radius:8px;background:#f7f7f7;padding:8px 10px;text-align:left}
+.design-ratings b,.design-ratings small{display:block;font-size:10px;white-space:nowrap}
+.design-ratings small{color:#888;font-weight:400}
+.design-ratings strong{font-size:21px}
+.design-source-mark{display:inline-flex;align-items:center;justify-content:center;flex:0 0 29px;width:29px;height:29px;border:1px solid #ccc;border-radius:50%;background:white;color:#444;font-size:10px;font-weight:700;white-space:nowrap}
+.design-review-carousel{position:relative}
+.design-review-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 54px)/4);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px}
+.design-review-track::-webkit-scrollbar{display:none}
+.design-review-card{padding:24px 20px;background:#f6f6f6;border:1px solid #e5e5e5;border-radius:18px;scroll-snap-align:start;min-width:0}
+.design-review-meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:20px}
+.design-review-meta>div{margin-right:auto}
+.design-review-meta h3{font:600 13px Arial,sans-serif;margin:0 0 3px}
+.design-review-meta time{font-size:10px;color:#888}
+.design-review-meta .design-source-mark{width:26px;height:26px;flex-basis:26px;font-size:9px}
+.design-stars{font-size:13px;letter-spacing:1px;white-space:nowrap;color:#555}
+.design-stars>span{color:#ccc}
+.design-review-card p{color:#777;font-size:12px;line-height:1.7;margin:0}
+.design-carousel-arrow{position:absolute;top:45%;z-index:1;width:38px;height:38px;border:1px solid #ddd;background:#fff;border-radius:50%;font-size:22px;box-shadow:0 3px 12px #0001}
+.design-carousel-arrow.prev{left:-18px}.design-carousel-arrow.next{right:-18px}
+.design-recommendation{text-align:center;padding-top:24px}
+.design-handshake{font-size:40px;filter:grayscale(1)}
+.design-recommendation p{font-size:21px;margin:5px 0 2px}
+.design-recommendation small{display:block;font-size:11px;color:#888;margin-bottom:12px}
+.design-recommendation .btn{font-weight:400}
+#design-reviews-dialog{width:1050px}
+.design-review-dialog-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.design-quote{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);padding:55px;gap:45px;border-radius:16px;background:#292929}
+.design-quote h2{font-size:32px}
+.design-quote-points{padding:0;list-style:none;margin:18px 0;color:#bbb;font-size:11px;line-height:1.6}
+.design-quote-points li{margin:5px 0;padding-left:15px;position:relative}
+.design-quote-points li:before{content:'✓';position:absolute;left:0}
+.design-messenger-row{display:flex;align-items:center;flex-wrap:wrap;gap:14px;font-size:12px}
+.design-social{display:flex;align-items:center;gap:9px}
+.design-social a,.design-social button{display:inline-flex!important;align-items:center;justify-content:center;width:29px;height:29px;margin:0!important;padding:0;border:1px solid currentColor;border-radius:7px;font-size:11px;line-height:1;background:transparent;color:inherit;text-decoration:none}
+.design-quote-form{padding:28px;border-radius:14px;gap:15px;min-width:0}
+.design-quote-form h3{font:600 21px Arial,sans-serif;margin:0}
+.design-quote-form .row2{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:15px}
+.design-quote-form label{font-size:11px}
+.design-quote-form input,.design-quote-form select{background:#f3f3f3;min-height:43px}
+.design-quote-form .design-file-label{text-align:center;position:relative;cursor:pointer;padding:17px 12px;border:1px dashed #bbb;border-radius:6px;background:#f2f2f2;display:grid;gap:6px;overflow:hidden}
+.design-file-label input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.design-file-label:focus-within{outline:2px solid #777;outline-offset:3px}
+.design-file-label>span{color:#999;font-size:10px;overflow-wrap:anywhere}
+.design-quote-form .form-end{gap:15px;align-items:center}
+.design-quote-form .form-end small{font-size:9px;line-height:1.5}
+.design-quote-form .form-end .btn{white-space:nowrap;min-height:43px;text-transform:uppercase;font-size:10px}
+.design-inline-link{font:inherit;border:0;padding:0;text-align:left;text-decoration:underline;cursor:pointer}
+.design-demo-note{font-size:9px;text-align:center;color:#999}
+.design-footer{background:#fafafa;border:0;padding-top:25px}
+.design-footer .footer-grid{grid-template-columns:1.1fr 1fr 1fr 1fr 1.2fr;gap:32px;padding-top:25px;padding-bottom:45px}
+.design-footer .footer-logo{width:135px;margin-bottom:18px}
+.design-footer .footer-logo img{height:165px}
+.design-footer .footer-grid h3{font-size:9px;letter-spacing:1.5px;margin-bottom:24px}
+.design-footer .footer-grid p{font-size:11px;line-height:1.8}
+.design-footer .footer-grid>div:first-child p{font-size:10px}
+.design-footer-link{display:block;border:0;padding:0;margin:0 0 10px;font:inherit;text-align:left;cursor:pointer}
+.design-footer-link:hover{text-decoration:underline;text-underline-offset:4px}
+.design-footer .partner-label{font-size:11px;line-height:1.55;color:inherit}
+.design-footer-bottom{background:#303030;color:#ccc;padding:10px 0}
+.design-footer-bottom>.container{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.design-footer-bottom small,.design-footer-bottom button{font-size:9px}
+.design-footer-bottom>.container>div{display:flex;gap:18px}
+.design-footer-bottom button{border:0;padding:0;color:inherit;text-decoration:underline;text-align:left}
+@media(max-width:1100px){
+ .design-advantage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .design-advantage-grid article{min-height:175px}
+ .design-ratings{gap:5px}.design-ratings>button{padding:6px;gap:6px}
+ .design-review-track{grid-auto-columns:calc((100% - 18px)/2)}
+ .design-quote{padding:32px;gap:28px}.design-quote h2{font-size:28px}
+ .design-quote-form{padding:22px}.design-quote-form .form-end{flex-wrap:wrap}.design-quote-form .form-end .btn{width:100%}
+ .design-footer .footer-grid{gap:22px;grid-template-columns:1.05fr 1fr 1fr 1fr 1.2fr}
+ .design-footer .footer-logo{width:105px}.design-footer .footer-logo img{height:135px}
+}
+@media(max-width:700px){
+ .design-section-title{text-align:left;margin-bottom:24px}
+ .design-advantage-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+ .design-advantage-grid article{padding:22px;min-height:0;border-radius:10px}
+ .design-advantage-grid h3{font-size:16px}.design-advantage-grid p{font-size:12px}
+ .design-reviews .section-head{display:block}.design-ratings{margin-top:22px;gap:6px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+ .design-ratings>button{flex-wrap:wrap;justify-content:center;text-align:center;padding:8px 3px;gap:5px}
+ .design-ratings b,.design-ratings small{font-size:9px}.design-ratings .design-source-mark{display:none}.design-ratings strong{font-size:18px}
+ .design-reviews-intro{font-size:12px}.design-review-track{grid-auto-columns:100%;gap:16px}
+ .design-review-card{padding:24px}.design-review-card p{font-size:13px}
+ .design-review-meta{flex-wrap:nowrap}.design-carousel-arrow.prev{left:-13px}.design-carousel-arrow.next{right:-13px}
+ .design-recommendation p{font-size:18px}.design-review-dialog-grid{grid-template-columns:minmax(0,1fr)}
+ .design-quote{grid-template-columns:minmax(0,1fr);padding:26px 18px;gap:26px;border-radius:10px}
+ .design-quote h2{font-size:26px}.design-quote h2 br{display:none}
+ .design-quote-form{padding:22px 16px;gap:14px}.design-quote-form h3{font-size:20px}
+ .design-quote-form .row2{grid-template-columns:minmax(0,1fr);gap:14px}.design-quote-form .form-end{flex-direction:column;align-items:stretch}
+ .design-quote-points{font-size:11px}.design-quote-form label{font-size:11px}
+ .design-footer .footer-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:25px 20px;padding-top:10px;padding-bottom:30px}
+ .design-footer .footer-grid>div:first-child{grid-column:1/-1;text-align:center}
+ .design-footer .footer-grid>div:last-child{grid-column:1/-1}
+ .design-footer .footer-grid p{font-size:11px}.design-footer .footer-grid h3{margin-bottom:16px}
+ .design-footer .footer-logo{width:115px}.design-footer .footer-logo img{height:140px}
+ .design-footer-bottom>.container{display:block}.design-footer-bottom>.container>div{display:grid;gap:9px;margin-top:12px}
+}
