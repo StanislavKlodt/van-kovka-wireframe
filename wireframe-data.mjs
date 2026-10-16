@@ -43,5 +43,5 @@ export const works = [
  ['rails','Перила внутренней лестницы','stairs-1.jpg','Москва · перила для дома'],
  ['gates','Ворота в едином стиле с забором','gates-7.jpg','Московская область · входная группа']
 ];
-export const pages = [['home','Главная'],['catalog','Каталог изделий'],['product','Карточка изделия'],['elements','Элементы ковки'],['element','Карточка элемента'],['portfolio','Наши работы'],['project','Объект'],['about','Производство'],['order','Как заказать'],['delivery','Доставка и оплата'],['contacts','Контакты'],['cart','Корзина'],['account','Личный кабинет']];
+export const pages = [['home','Главная'],['catalog','Каталог изделий'],['product','Карточка изделия'],['elements','Элементы ковки'],['element','Карточка элемента'],['portfolio','Наши работы'],['project','Объект'],['about','Производство'],['order','Как заказать'],['delivery','Доставка и оплата'],['partners','Партнёрам'],['contacts','Контакты'],['cart','Корзина'],['account','Личный кабинет']];
 export const money = n => Math.round(n).toLocaleString('ru-RU')+' ₽';
