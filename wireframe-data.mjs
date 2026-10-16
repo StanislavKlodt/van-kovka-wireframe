@@ -31,7 +31,7 @@ export const stockCategories = [
  ['ornaments','Элементы орнамента',76,'stock-elementy-ornamenta.jpg','Вензеля и готовые композиции'],
  ['handrails','Поручни и окончания',36,'stock-poruchni-okonchaniya.png','Для сборки перил и ограждений'],
  ['balls','Шары и сферы',36,'stock-shary.jpg','Для столбов и декоративных узлов'],
- ['paint','Краски и патина',17,'stock-kraski-patina.jpg','Для покрытия и отделки металла']
+ ['paint','Краски и патина',17,'stock-paint-primer.jpg','Для покрытия и отделки металла']
 ];
 export const stock = [
  ['5379','Балясина 5379','baluster-2.jpg',570,'900 мм · труба Ø30','balusters'],
@@ -45,7 +45,7 @@ export const stock = [
  ['15420','Вензель 15420','stock-elementy-ornamenta.jpg',320.5,'1 095 × 285 × 145 мм · труба 15 мм','ornaments'],
  ['12.082','Поручень 12.082','stock-poruchni-okonchaniya.png',1400,'3 000 × 55 × 18 мм','handrails'],
  ['Шар пустотелый 100х1,5мм','Шар пустотелый 100 × 1,5 мм','stock-shary.jpg',350,'Диаметр 100 мм · стенка 1,5 мм','balls'],
- ['16','Патина золото-бронза 0016','stock-kraski-patina.jpg',3720,'Золотая бронза · фасовка уточняется','paint']
+ ['0072, грунт, серый','Грунт KOVALI 0072, серый','stock-paint-primer.jpg',1224,'Антикоррозийный грунт · 0,8 кг','paint']
 ];
 export const steps = [
  ['Заявка','Выберите изделие или пришлите фото, размеры и город.'],
