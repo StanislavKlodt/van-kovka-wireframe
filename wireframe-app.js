@@ -1,7 +1,7 @@
 (()=>{
 'use strict';
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const {stock,models,categories}=window.WIREFRAME;
+const {stock,stockCategories,models,categories}=window.WIREFRAME;
 const params=new URLSearchParams(location.search),page=document.body.dataset.page;
 const money=n=>Math.round(n).toLocaleString('ru-RU')+' ₽';
 const safeQty=v=>Math.max(1,Math.min(9999,Math.floor(Number(v)||1)));
@@ -19,7 +19,7 @@ $$('[data-close]').forEach(b=>b.addEventListener('click',()=>b.closest('dialog')
 $$('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}}));
 $$('[data-notes]').forEach(b=>b.addEventListener('click',()=>$('#notes-dialog').showModal()));
 $$('[data-ask]').forEach(b=>b.addEventListener('click',()=>{const dialog=$('#quote-dialog');$('h3',dialog).textContent=b.dataset.ask;const f=$('form',dialog);f.reset();$('.form-result',f).textContent='';$('.form-error',f).hidden=true;const names=$('[data-file-names]',f);if(names)names.textContent='Файл не выбран';if(/замер/i.test(b.dataset.ask))$('select[name=subject]',f).value='Замер на объекте';if(/элемент/i.test(b.dataset.ask))$('select[name=subject]',f).value='Элементы со склада';if(/AV-|RA-|FE-|AW-|GR-|FU-/i.test(b.dataset.ask))$('[name=message]',f).value=b.dataset.ask;dialog.showModal()}));
-$$('[data-search]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const q=$('[name=q]',f).value.trim();if(!q)return;const isStock=/баляс|пик[аиу]|элемент|5379|5818|4813|11\.002/i.test(q);location.href=(isStock?'elements.html':'catalog.html')+'?q='+encodeURIComponent(q)}));
+$$('[data-search]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const q=$('[name=q]',f).value.trim();if(!q)return;const isStock=/баляс|пик[аиу]|элемент|лист|цвет|наклад|орнамент|вензел|поруч|шар|сфер|краск|патин|5379|5818|4813|11\.002/i.test(q);location.href=(isStock?'elements.html':'catalog.html')+'?q='+encodeURIComponent(q)}));
 $$('input[type=file]').forEach(input=>input.addEventListener('change',()=>{const names=$('[data-file-names]',input.closest('label'));const files=[...input.files];if(files.some(f=>f.size>20*1024*1024)){input.value='';if(names)names.textContent='Выберите файлы размером до 20 МБ каждый';toast('Файл слишком большой: максимум 20 МБ');return}if(names)names.textContent=files.length?files.map(f=>f.name).join(', '):'Файл не выбран'}));
 $$('[data-request]').forEach(f=>f.addEventListener('submit',e=>{
  e.preventDefault();const contact=$('[name=contact]',f).value.trim(),digits=contact.replace(/\D/g,'');const valid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact)||(/^[+\d\s()\-]+$/.test(contact)&&digits.length>=10&&digits.length<=15);const error=$('.form-error',f);
@@ -63,9 +63,9 @@ if(page==='product'){
 }
 function calculate(){const f=$('#configurator'),w=Number($('#width').value),h=Number($('#height').value);if(!f.checkValidity()||w<=0||h<=0){$('#product-total').textContent='Уточните размеры';$('.config-error').hidden=false;return}$('.config-error').hidden=true;const area=f.dataset.unit==='м²'?w*h:f.dataset.unit==='пог. м'?w:1,base=Number(f.dataset.price);const extras=category==='gates'||!params.get('id')||params.get('id').startsWith('AV-')?Number($('#infill').value)+Number($('#coating').value)*area:0;$('#product-total').textContent='от '+money(base*area+extras)}
 if(page==='elements'){
- let stockType=params.get('type')||'all';$('#stock-search').value=params.get('q')||'';
- function applyStock(){const q=$('#stock-search').value.trim().toLowerCase();let shown=0;$$('.stock-card[data-stock-id]').forEach(card=>{const s=known(card.dataset.stockId);card.hidden=(stockType!=='all'&&s[5]!==stockType)||(q&&!`${s[0]} ${s[1]}`.toLowerCase().includes(q));if(!card.hidden)shown++});$$('[data-stock-filters] button').forEach(b=>b.classList.toggle('active',b.dataset.stockType===stockType));$('#empty-stock').hidden=shown>0}
- $$('[data-stock-filters] button').forEach(b=>b.addEventListener('click',()=>{stockType=b.dataset.stockType;applyStock()}));$('#stock-search').addEventListener('input',applyStock);applyStock();
+ let stockType=stockCategories.some(c=>c[0]===params.get('type'))?params.get('type'):'all';$('#stock-search').value=params.get('q')||'';
+ function applyStock(){const selected=stockCategories.find(c=>c[0]===stockType);$('h1').textContent=selected?selected[1]+' ('+selected[2]+')':'Элементы холодной ковки';const q=$('#stock-search').value.trim().toLowerCase();let shown=0;$$('.stock-card[data-stock-id]').forEach(card=>{const s=known(card.dataset.stockId);card.hidden=(stockType!=='all'&&s[5]!==stockType)||(q&&!`${s[0]} ${s[1]}`.toLowerCase().includes(q));if(!card.hidden)shown++});$$('[data-stock-filters] button').forEach(b=>{b.classList.toggle('active',b.dataset.stockType===stockType);b.setAttribute('aria-pressed',String(b.dataset.stockType===stockType))});$('#empty-stock').hidden=shown>0}
+ $$('[data-stock-filters] button').forEach(b=>b.addEventListener('click',()=>{stockType=b.dataset.stockType;const url=new URL(location.href);if(stockType==='all')url.searchParams.delete('type');else url.searchParams.set('type',stockType);history.replaceState(null,'',url);applyStock()}));$('#stock-search').addEventListener('input',applyStock);applyStock();
 }
 if(page==='element'){
  const s=known(params.get('id'))||stock[0];$('h1').textContent=s[1];$('#element-name').textContent=s[1];$('#element-sku').textContent='Артикул '+s[0];$('#element-size').textContent=s[4];$('#element-image').src='../assets/img/'+s[2];$('#element-image').alt=s[1];$('#element-price').textContent=money(s[3]);$('#element-add').dataset.add=s[0];

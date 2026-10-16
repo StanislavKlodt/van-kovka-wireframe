@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-16",
+  "note": "Counts are article totals shown by source category pagination, not stock quantities. The prototype contains selected example products only.",
+  "categories": [
+    {"id": "balusters", "url": "https://van-kovka.ru/element/balyasiny/", "count": 93},
+    {"id": "pikes", "url": "https://van-kovka.ru/element/piki/", "count": 42},
+    {"id": "leaves", "url": "https://van-kovka.ru/element/listya/", "count": 242},
+    {"id": "flowers", "url": "https://van-kovka.ru/element/cvety-nakladki/", "count": 235},
+    {"id": "ornaments", "url": "https://van-kovka.ru/element/elementy-ornamenta/", "count": 76},
+    {"id": "handrails", "url": "https://van-kovka.ru/element/poruchni-okonchaniya/", "count": 36},
+    {"id": "balls", "url": "https://van-kovka.ru/element/shary/", "count": 36},
+    {"id": "paint", "url": "https://van-kovka.ru/element/kraski-patina/", "count": 17}
+  ]
+}

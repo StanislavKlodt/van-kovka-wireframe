@@ -21,13 +21,31 @@ export const gates = [
  ['AV-016','gates-2.jpg','Лаконичные прямые линии','swing','modern',9600],
  ['AV-015','gates-5.jpg','Декоративная калитка','wicket','floral',14600]
 ];
+// Article totals from the original public catalog, checked on 2026-10-16.
+// These describe the source catalog, not warehouse quantities or demo item counts.
+export const stockCategories = [
+ ['balusters','Балясины и столбы',93,'baluster-2.jpg','Для перил, ограждений и лестниц'],
+ ['pikes','Пики и наконечники',42,'pike-1.jpg','Для завершения заборов и ворот'],
+ ['leaves','Листья',242,'stock-listya.jpg','Растительный декор для ваших изделий'],
+ ['flowers','Цветы и накладки',235,'stock-cvety-nakladki.jpg','Декоративные детали и акценты'],
+ ['ornaments','Элементы орнамента',76,'stock-elementy-ornamenta.jpg','Вензеля и готовые композиции'],
+ ['handrails','Поручни и окончания',36,'stock-poruchni-okonchaniya.png','Для сборки перил и ограждений'],
+ ['balls','Шары и сферы',36,'stock-shary.jpg','Для столбов и декоративных узлов'],
+ ['paint','Краски и патина',17,'stock-kraski-patina.jpg','Для покрытия и отделки металла']
+];
 export const stock = [
  ['5379','Балясина 5379','baluster-2.jpg',570,'900 мм · труба Ø30','balusters'],
  ['11.002','Балясина 11.002','baluster-1.jpg',470,'950 мм · квадрат 14 × 14','balusters'],
  ['5818','Начальный столб 5818','baluster-3.jpg',1092,'1 000 мм · 53 × 53','balusters'],
  ['A9-12','Пика А9/12','pike-1.jpg',95,'110 × 25 мм · квадрат 12','pikes'],
  ['4813','Балясина композиционная 4813','baluster-6.jpg',487,'720 × 315 мм · труба 15 × 15','balusters'],
- ['A4','Пика А4','pike-2.jpg',75,'Декоративный наконечник','pikes']
+ ['A4','Пика А4','pike-2.jpg',75,'Декоративный наконечник','pikes'],
+ ['6924','Лист кованый, кувшинка 6924','stock-listya.jpg',420,'250 × 180 × 2 мм','leaves'],
+ ['4481.01','Накладка 4481.01','stock-cvety-nakladki.jpg',300,'100 × 670 × 1 мм','flowers'],
+ ['15420','Вензель 15420','stock-elementy-ornamenta.jpg',320.5,'1 095 × 285 × 145 мм · труба 15 мм','ornaments'],
+ ['12.082','Поручень 12.082','stock-poruchni-okonchaniya.png',1400,'3 000 × 55 × 18 мм','handrails'],
+ ['Шар пустотелый 100х1,5мм','Шар пустотелый 100 × 1,5 мм','stock-shary.jpg',350,'Диаметр 100 мм · стенка 1,5 мм','balls'],
+ ['16','Патина золото-бронза 0016','stock-kraski-patina.jpg',3720,'Золотая бронза · фасовка уточняется','paint']
 ];
 export const steps = [
  ['Заявка','Выберите изделие или пришлите фото, размеры и город.'],
